@@ -16,28 +16,28 @@ import sys
 import time
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-b", "--broker", dest="broker",
-                    type=str, 
-                    default="localhost",
-                    help="Address of MQTT broker")
-parser.add_argument("-p", "--port", dest="port",
-                    type=int, 
-                    default=1883,
-                    help="Port of MQTT broker")
-parser.add_argument("-u", "--user", dest="mqttuser",
-                    type=str, 
-                    default="mqttuser",
-                    help="User to connect to MQTT broker")
-parser.add_argument("-s", "--pass", dest="mqttpass",
-                    type=str, 
-                    default="",
-                    help="Password to connect to MQTT broker")
-parser.add_argument("-c", "--client", dest="client_id",
-                    type=str, 
-                    default="",
-                    help="Client ID to identify to MQTT broker")
+# parser.add_argument("-b", "--broker", dest="broker",
+#                     type=str,
+#                     default="localhost",
+#                     help="Address of MQTT broker")
+# parser.add_argument("-p", "--port", dest="port",
+#                     type=int,
+#                     default=1883,
+#                     help="Port of MQTT broker")
+# parser.add_argument("-u", "--user", dest="mqttuser",
+#                     type=str,
+#                     default="mqttuser",
+#                     help="User to connect to MQTT broker")
+# parser.add_argument("-s", "--pass", dest="mqttpass",
+#                     type=str,
+#                     default="",
+#                     help="Password to connect to MQTT broker")
+# parser.add_argument("-c", "--client", dest="client_id",
+#                     type=str,
+#                     default="",
+#                     help="Client ID to identify to MQTT broker")
 parser.add_argument("-d", "--device", dest="device",
-                    type=str, 
+                    type=str,
                     default="/dev/serial0",
                     help="Path to serial modbus device")
 args = parser.parse_args()
@@ -89,13 +89,13 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 #     send(client, "meters/inepro/{}".format(k), v)
 
 def modbus_connect(device):
-  instrument = minimalmodbus.Instrument(device, 2) # Set to inverter's address
+  instrument = minimalmodbus.Instrument(port=device, slaveaddress=1) # Set to inverter's address
   instrument.serial.baudrate = 9600
-  #instrument.serial.bytesize = 8
   instrument.serial.parity   = serial.PARITY_EVEN
+  #instrument.serial.bytesize = 8
   #instrument.serial.stopbits = 1
   #instrument.serial.timeout  = 3
-  #instrument.debug = True
+  instrument.debug = True
   return instrument
 
 def modbus_read(instrument):
