@@ -304,6 +304,7 @@ def modbus_read(instrument):
 
 def main():
   try:
+    print(minimalmodbus._get_diagnostic_string())
     #mqttc = mqtt_connect(broker, port, mqttuser, mqttpass, client_id)
     #mqtt_subscribe(mqttc)
     #mqttc.loop_start()
