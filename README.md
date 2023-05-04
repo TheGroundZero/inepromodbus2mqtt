@@ -8,6 +8,8 @@ My EV charger has a loadbalancing feature that ensures the total power draw of m
 Should there be a high energy demand in the house, the EV charger will decrease the charge output to keep everything balanced.
 To do this, current measuring clamps around the house's grid feed are connected to the Inepro N380CT and it communicates over modbus to the charger.
 
+![Inepro N380CT](docs/IneproN380CT.jpg)
+
 Using this script, I can get a copy of the data being sent to the charger, which I can then import in e.g. Home Assistant or Grafana for visualisation.
 
 TODO:
@@ -68,4 +70,4 @@ optional arguments:
 
 [blog]: https://sequr.be "Sequr.be"
 [pihat]: https://www.kiwi-electronics.nl/rs-485-pi "RS485 HAT for Raspberry Pi"
-[n380ct_manual]: docs/https://ineprometering.com/wp-content/uploads/2023/04/N380-CT-0516-short-user-manual-V1.14-3.pdf "N380-CT-0516 short user manual"
+[n380ct_manual]: docs/N380-CT-0516-short-user-manual-V1.14-3.pdf "N380-CT-0516 short user manual"
